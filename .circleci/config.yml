@@ -36,5 +36,18 @@ jobs:
       # run build!
       - run: yarn build
       
-      # deploy to s3!
-      - run: aws s3 sync ~/repo/build/* s3://neelesh-website-product/
+      # Install Dependencies
+      - run: 
+        name: Install dependencies
+        command: |
+            apt-get -y -qq update
+            apt-get -y -qq install python3.4-dev
+            curl -O https://bootstrap.pypa.io/get-pip.py
+            python3.4 get-pip.py --user
+            pip install awscli --upgrade --user
+            
+      # Deploy to S3
+      - run:
+        name: Deploy to S3
+        command: |
+            aws s3 sync ~/repo/build/* s3://neelesh-website-product/
