@@ -50,4 +50,4 @@ jobs:
       - run:
           name: Deploy to S3
           command: |
-            ~/.local/bin/aws s3 sync ~/repo/build/* s3://neelesh-website-product/
+            ~/.local/bin/aws s3 sync ~/repo/build/ s3://neelesh-website-product/
