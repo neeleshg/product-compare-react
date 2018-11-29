@@ -63,8 +63,8 @@ jobs:
 #      - run: yarn build
 #
       - attach_workspace:
-          at: ~repo/workspace
-      - run: ls -l ~/repo/workspace/
+          at: /tmp/workspace
+      - run: ls -l /tmp/workspace
       
       # Install Dependencies
       - run: 
