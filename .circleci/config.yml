@@ -150,12 +150,18 @@ workflows:
 
   prod:
     jobs:
-        - hold:
+        - hold_prod_build:
             type: approval
+            
         - prod_build:
             requires:
-               - hold
-             
+               - hold_prod_build
+               
+        - hold_prod_deploy:
+            type: approval
+            requires:
+               - prod_build
+               
         - prod_deploy:
             requires:
-               - hold
+               - hold_prod_deploy
