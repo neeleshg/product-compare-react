@@ -37,6 +37,9 @@ jobs:
       - run: yarn build
   
   sandbox_deploy:
+    docker:
+      # specify the version you desire here
+      - image: circleci/node:9.10
     
     working_directory: ~/repo
     steps:
@@ -108,7 +111,8 @@ workflows:
   version: 2
   sandbox:
     jobs:
-        - sandbox_build_deploy
+        - sandbox_build
+        - sandbox_deploy
 #  prod:
 #    jobs:
 #        - prod_build_deploy
