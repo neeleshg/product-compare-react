@@ -113,6 +113,8 @@ workflows:
     jobs:
         - sandbox_build
         - sandbox_deploy
+            requires:
+               - sandbox_build
 #  prod:
 #    jobs:
 #        - prod_build_deploy
