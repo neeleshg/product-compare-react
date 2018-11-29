@@ -96,6 +96,9 @@ jobs:
         
       # run build!
       - run: yarn build
+      - store_artifacts:
+          path: /tmp/artifacts
+      
   
   prod_deploy:
     docker:
@@ -123,6 +126,8 @@ jobs:
       # run build!
       - run: yarn build
       
+      - run: ls -l /tmp/artifacts
+      
       # Install Dependencies
       - run: 
           name: Install dependencies
@@ -148,20 +153,20 @@ workflows:
             requires:
                - sandbox_build
 
-  prod:
-    jobs:
-        - hold_prod_build:
-            type: approval
-            
-        - prod_build:
-            requires:
-               - hold_prod_build
-               
-        - hold_prod_deploy:
-            type: approval
-            requires:
-               - prod_build
-               
-        - prod_deploy:
-            requires:
-               - hold_prod_deploy
+#  prod:
+#    jobs:
+#        - hold_prod_build:
+#            type: approval
+#            
+#        - prod_build:
+#            requires:
+#               - hold_prod_build
+#               
+#        - hold_prod_deploy:
+#            type: approval
+#            requires:
+#               - prod_build
+#               
+#        - prod_deploy:
+#            requires:
+#               - hold_prod_deploy
