@@ -29,6 +29,9 @@ jobs:
         
       # run build!
       - run: yarn build
+      
+      - store_artifacts:
+          path: /tmp/artifacts
   
   sandbox_deploy:
     docker:
@@ -55,6 +58,10 @@ jobs:
         
       # run build!
       - run: yarn build
+      
+      - run:
+          name: List artifacts
+          command: ls -l /tmp/artifacts
       # Install Dependencies
       - run: 
           name: Install dependencies
@@ -125,8 +132,7 @@ jobs:
         
       # run build!
       - run: yarn build
-      
-      - run: ls -l /tmp/artifacts
+     
       
       # Install Dependencies
       - run: 
