@@ -12,9 +12,6 @@ jobs:
 
     steps:
       - checkout
-      - run:
-          name: Create base dir
-          command: mkdir /tmp/artifacts
           
       # Download and cache dependencies
       - restore_cache:
@@ -29,7 +26,11 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-        
+      
+      - run:
+          name: Create base dir
+          command: mkdir /tmp/artifacts
+      
       # run build!
       - run: yarn build
       
