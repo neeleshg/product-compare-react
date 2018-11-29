@@ -94,6 +94,7 @@ jobs:
   
   prod_deploy:
     executor: node-executor
+    steps:
       - attach_workspace:
           at: /tmp/workspace
           
