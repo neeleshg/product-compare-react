@@ -82,9 +82,9 @@ jobs:
     
 workflows:
   version: 2
-    sandbox:
-        jobs:
-            - sandbox_build_deploy
-    prod:
-        jobs:
-            - prod_build_deploy
+  sandbox:
+    jobs:
+        - sandbox_build_deploy
+  prod:
+    jobs:
+        - prod_build_deploy
