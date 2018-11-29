@@ -148,7 +148,7 @@ jobs:
             ~/.local/bin/aws s3 sync ~/repo/build/ s3://neelesh-website-product-prod/
     
 workflows:
-  version: 2
+  version: 2.1
   sandbox:
     jobs:
         - sandbox_build
