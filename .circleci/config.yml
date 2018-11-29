@@ -42,7 +42,7 @@ jobs:
           command: |
             ~/.local/bin/aws s3 sync ~/repo/build/ s3://neelesh-website-product/
             
-   prod_build_deploy:
+  prod_build_deploy:
     docker:
       # specify the version you desire here
       - image: circleci/node:9.10
