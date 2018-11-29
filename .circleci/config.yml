@@ -64,7 +64,7 @@ jobs:
 #
       - attach_workspace:
           at: /tmp/workspace
-      - run: ls -l /tmp/workspace
+      - run: ls -l /tmp/workspace/build/
       
       # Install Dependencies
       - run: 
@@ -80,7 +80,7 @@ jobs:
       - run:
           name: Deploy to S3
           command: |
-            ~/.local/bin/aws s3 sync ~/repo/build/ s3://neelesh-website-product/
+            ~/.local/bin/aws s3 sync /tmp/workspace/build/ s3://neelesh-website-product/
             
   prod_build:
     docker:
